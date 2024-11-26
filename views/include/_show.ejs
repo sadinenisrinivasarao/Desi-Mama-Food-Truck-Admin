@@ -1,0 +1,17 @@
+<% for(var i = 0; i < foodItems.length; i++) { %>
+<tr>
+    <td><%= i + 1 %></td>
+    <td><%= foodItems[i].item %></td>
+    <td><%= foodItems[i].price %></td>
+    <td><%= foodItems[i].category %></td>
+    <td><%= foodItems[i].todayspecial %></td>
+    <td class="action-btns">
+        <a href="/update-foodItem?id=<%= foodItems[i]._id%>" class="btn border-shadow update">
+            <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+        </a>
+        <a class="btn border-shadow delete" data-id=<%= foodItems[i]._id%> >
+            <span class="text-gradient"><i class="fas fa-times"></i></span>
+        </a>
+    </td>
+</tr>
+<% } %>
