@@ -17,7 +17,7 @@ $("#update_foodItem").submit(function (event) {
 
 
     var request = {
-        "url": `http://localhost:3000/api/foodItems/${data.id}`,
+        "url": `https://desi-babai-food-truck-admin.vercel.app/api/foodItems/${data.id}`,
         "method": "PUT",
         "data": data
     }
@@ -34,7 +34,7 @@ if (window.location.pathname == "/") {
         var id = $(this).attr("data-id")
 
         var request = {
-            "url": `http://localhost:3000/api/foodItems/${id}`,
+            "url": `https://desi-babai-food-truck-admin.vercel.app/api/foodItems/${id}`,
             "method": "DELETE"
         }
 

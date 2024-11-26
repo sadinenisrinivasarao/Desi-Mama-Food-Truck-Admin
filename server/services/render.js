@@ -3,7 +3,7 @@ const axios = require('axios');
 
 exports.homeRoutes = (req, res) => {
     // Make a get request to /api/users
-    axios.get('http://localhost:3000/api/foodItems')
+    axios.get('https://desi-babai-food-truck-admin.vercel.app/api/foodItems')
         .then(function (response) {
             res.render('index', { foodItems: response.data });
         })
@@ -19,7 +19,7 @@ exports.add_foodItem = (req, res) => {
 }
 
 exports.update_foodItem = (req, res) => {
-    axios.get('http://localhost:3000/api/foodItems', { params: { id: req.query.id } })
+    axios.get('https://desi-babai-food-truck-admin.vercel.app/api/foodItems', { params: { id: req.query.id } })
         .then(function (itemdata) {
             res.render("update_foodItem", { foodItem: itemdata.data })
         })

@@ -9,7 +9,7 @@ const connectDB = require('./server/database/connection');
 const app = express();
 
 dotenv.config({ path: '.env' })
-const PORT = process.env.PORT || 8080
+const PORT = 'https://desi-babai-food-truck-admin.vercel.app'
 
 // log requests
 app.use(morgan('tiny'));
@@ -32,4 +32,4 @@ app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 // load routers
 app.use('/', require('./server/routes/router'))
 
-app.listen(PORT, () => { console.log(`Server is running on http://localhost:${PORT}`) });
+app.listen(`https://desi-babai-food-truck-admin.vercel.app`);
