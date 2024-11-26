@@ -188,11 +188,11 @@ table {
 }
 
 .btn.border-shadow.update {
-    background: #81ed81;
+    background: #388538;
 }
 
 .btn.border-shadow.delete {
-    background: #ff9e9e;
+    background: #e41d1d;
 }
 
 .btn.border-shadow.delete:hover {
