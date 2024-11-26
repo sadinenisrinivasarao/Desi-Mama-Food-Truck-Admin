@@ -131,13 +131,13 @@ table {
         display: flex;
     }
 
-    table,
+    /* table,
     thead,
     tbody,
     th,
     td {
         display: block;
-    }
+    } */
 
     /* thead tr {
         position: absolute;
