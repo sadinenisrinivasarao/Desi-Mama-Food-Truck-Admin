@@ -43,7 +43,7 @@ app.get('/', services.homeRoutes);
 
 // load assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
-app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
+
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 // app.set("views", path.join(__dirname, "server", "views"));
 app.set('views', path.join(__dirname, 'views'));
