@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
 const axios = require('axios');
-
+const services = require('./server/services/render');
 const connectDB = require('./server/database/connection');
 
 const app = express();
@@ -23,19 +23,23 @@ app.use(bodyparser.urlencoded({ extended: true }))
 
 // set view engine
 app.set("view engine", "ejs")
-//app.set("views", path.resolve(__dirname, "views/ejs"))
-app.get('/', (req, res) => {
-    axios.get('https://desi-babai-food-truck-admin.vercel.app/api/foodItems')
-        .then(function (response) {
-            // Pass the foodItems to the view
-            res.render('index', { foodItems: response.data });
-        })
-        .catch(err => {
-            // Handle any errors from the axios request
-            console.error(err);
-            res.send("Error fetching data");
-        });
-});
+// //app.set("views", path.resolve(__dirname, "views/ejs"))
+// app.get('/', (req, res) => {
+//     axios.get('https://desi-babai-food-truck-admin.vercel.app/api/foodItems')
+//         .then(function (response) {
+//             // Pass the foodItems to the view
+//             res.render('index', { foodItems: response.data });
+//         })
+//         .catch(err => {
+//             // Handle any errors from the axios request
+//             console.error(err);
+//             res.send("Error fetching data");
+//         });
+// });
+
+
+
+app.get('/', services.homeRoutes);
 
 // load assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
