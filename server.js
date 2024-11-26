@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
+const axios = require('axios');
 
 const connectDB = require('./server/database/connection');
 
@@ -23,13 +24,25 @@ app.use(bodyparser.urlencoded({ extended: true }))
 // set view engine
 app.set("view engine", "ejs")
 //app.set("views", path.resolve(__dirname, "views/ejs"))
-
+app.get('/', (req, res) => {
+    axios.get('https://desi-babai-food-truck-admin.vercel.app/api/foodItems')
+        .then(function (response) {
+            // Pass the foodItems to the view
+            res.render('index', { foodItems: response.data });
+        })
+        .catch(err => {
+            // Handle any errors from the axios request
+            console.error(err);
+            res.send("Error fetching data");
+        });
+});
 
 // load assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
 app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 // app.set("views", path.join(__dirname, "server", "views"));
+app.set('views', path.join(__dirname, 'views'));
 // load routers
 app.use('/', require('./server/routes/router'))
 
