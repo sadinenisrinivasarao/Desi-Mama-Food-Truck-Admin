@@ -33,3 +33,5 @@ app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 app.use('/', require('./server/routes/router'))
 
 // app.listen(`https://desi-babai-food-truck-admin.vercel.app`);
+
+module.exports = app;
