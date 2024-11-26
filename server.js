@@ -23,12 +23,15 @@ app.use(bodyparser.urlencoded({ extended: true }))
 // set view engine
 app.set("view engine", "ejs")
 //app.set("views", path.resolve(__dirname, "views/ejs"))
+app.get('/', (req, res) => {
+    res.render('index');  // This looks for 'views/index.ejs'
+});
 
 // load assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
 app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
-app.set("views", path.join(__dirname, "server", "views"));
+app.set("views", express.static(path.join(__dirname, "server", "views")));
 // load routers
 app.use('/', require('./server/routes/router'))
 
