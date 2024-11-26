@@ -71,8 +71,12 @@ a {
     background: linear-gradient(to right, #a1a3ee, #a136e4);
 }
 
+.thead-dark-nav {
+    background: #f7b519;
+}
+
 #header nav {
-    background-color: #06d6a0;
+    background: linear-gradient(167deg, #ffb163 33%, #FFFFFF 33%, #FFFFFF 66%, #62d058 66%);
     padding: 1em 0;
     width: 100%;
 }
@@ -113,7 +117,7 @@ table {
 }
 
 .table tr:hover {
-    background-color: #06d6a0;
+    background-color: #f3eeb8;
 }
 
 .table tr:hover td>a {
@@ -180,11 +184,13 @@ table {
 }
 
 .submit-btn {
+    display: block;
     width: 10rem;
     height: 3em;
     background: orange;
     border: 2px solid transparent;
     border-radius: 5%;
+    justify-self: center;
 }
 
 .btn.border-shadow.update {
