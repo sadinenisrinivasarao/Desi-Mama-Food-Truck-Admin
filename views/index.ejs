@@ -1,64 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Items</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <h1>Food Items</h1>
-    <div id="food-items">
-        <% foodItems.forEach(item => { %>
-            <div class="food-item">
-                <img src="<%= item.image %>" alt="<%= item.name %>" loading="lazy">
-                <h2><%= item.name %></h2>
-                <p><%= item.description %></p>
-                <p>Price: $<%= item.price %></p>
+
+<!-- include header -->
+    <%- include('include/_header') %>
+<!-- /include header -->
+
+
+    <!-- Main Site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="/add-foodItem" class="border-shadow">
+                    <span class="text-gradient">New Food Item <i class="fas fa-angle-double-right"></i></span>
+                </a>
             </div>
-        <% }) %>
-    </div>
-    <button id="load-more" data-current-page="<%= currentPage %>" data-total-pages="<%= totalPages %>">
-        Load More
-    </button>
 
-    <script>
-        const loadMoreButton = document.getElementById('load-more');
-        const foodItemsContainer = document.getElementById('food-items');
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark-nav">
+                        <tr>
+                            <th>ID</th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Today's Special</th>
+                            <th>Action</th>
 
-        loadMoreButton.addEventListener('click', async () => {
-            const currentPage = parseInt(loadMoreButton.getAttribute('data-current-page'));
-            const totalPages = parseInt(loadMoreButton.getAttribute('data-total-pages'));
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- include('include/_show') %>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
+<!-- /Main Site -->
 
-            if (currentPage >= totalPages) return; // No more pages to load
 
-            try {
-                const response = await fetch(`/api/foodItems?page=${currentPage + 1}&limit=10`);
-                const data = await response.json();
-                
-                // Append new items to the container
-                data.foodItems.forEach(item => {
-                    const foodItemDiv = document.createElement('div');
-                    foodItemDiv.classList.add('food-item');
-                    foodItemDiv.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}" loading="lazy">
-                        <h2>${item.name}</h2>
-                        <p>${item.description}</p>
-                        <p>Price: $${item.price}</p>
-                    `;
-                    foodItemsContainer.appendChild(foodItemDiv);
-                });
-
-                // Update current page
-                loadMoreButton.setAttribute('data-current-page', data.currentPage);
-
-                if (data.currentPage >= totalPages) {
-                    loadMoreButton.style.display = 'none'; // Hide button when all pages are loaded
-                }
-            } catch (error) {
-                console.error('Error loading more items:', error);
-            }
-        });
-    </script>
-</body>
-</html>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
