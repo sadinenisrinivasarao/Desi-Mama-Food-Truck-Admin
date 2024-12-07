@@ -17,6 +17,10 @@ var schema = new mongoose.Schema({
     todayspecial: {
         type: String,
         required: true,
+    },
+    isAvailable: {
+        type: String,
+        required: true,
     }
 })
 

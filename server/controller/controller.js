@@ -13,7 +13,8 @@ exports.create = (req, res) => {
         item: req.body.item,
         price: req.body.price,
         category: req.body.category,
-        todayspecial: req.body.todayspecial
+        todayspecial: req.body.todayspecial,
+        isAvailable: req.body.isAvailable
     })
 
     // save user in the database
